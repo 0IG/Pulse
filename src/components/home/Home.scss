@@ -1,0 +1,33 @@
+body {
+    background-color: #181818
+}
+
+.Home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__input {
+        width: 400px;
+        height: 40px;
+        font-size: 15px;
+        outline: none;
+        border: 1px solid black;
+        padding-left: 10px;
+        margin-bottom: 20px;
+        font-family: "Orbitron", serif;
+        background-color: white;
+    }
+
+    input::placeholder {
+        color: #D15F33;
+    }
+}
