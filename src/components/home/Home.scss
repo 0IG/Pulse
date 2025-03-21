@@ -16,15 +16,28 @@ body {
     }
 
     &__input {
+        display: flex;
         width: 400px;
         height: 40px;
         font-size: 15px;
         outline: none;
         border: 1px solid black;
         padding-left: 10px;
-        margin-bottom: 20px;
         font-family: "Orbitron", serif;
         background-color: white;
+    }
+
+    &__button {
+        width: 40px;
+        height: 40px;
+        background-color: #D15F33;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+
+    &__icon {
+        color: white;
+        font-size: 20px;
     }
 
     input::placeholder {
