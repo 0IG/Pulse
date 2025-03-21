@@ -1,3 +1,3 @@
 # Pulse
 
-### Keeping a pulse on your email health
+### Keeping a pulse on your online health
