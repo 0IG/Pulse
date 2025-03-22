@@ -1,0 +1,25 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    &__title {
+        font-family: "Orbitron", serif;
+        font-size: 50px;
+        font-weight: 500;
+        color: white;
+    }
+
+    &__input {
+        display: flex;
+        width: 400px;
+        height: 40px;
+        font-size: 15px;
+        outline: none;
+        border: 1px solid black;
+        padding-left: 10px;
+        font-family: "Orbitron", serif;
+        background-color: white;
+    }
+}
