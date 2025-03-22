@@ -1,6 +1,6 @@
 import React from 'react'
 import './Home.scss'
-import Index from '../index/Index.jsx'
+import LatestBreach from '../index/latestBreach/LatestBreach';
 import { RiUserSearchFill } from "react-icons/ri";
 
 export default function Home() {

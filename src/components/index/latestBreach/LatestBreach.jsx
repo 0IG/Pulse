@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import './Index.scss'
+import './latestBreach.scss'
 
-function Index() {
+function latestBreach() {
     const baseUrl = import.meta.env.VITE_BASE_URL
     const [latestBreach, setLatestBreach] = useState(null);
     
@@ -19,18 +19,18 @@ function Index() {
         getLatestBreachedCompany();
     }, []);
   return (
-    <div className='Latest'>
+    <div className='latest'>
         <h1 className='Latest__title'>
             Latest Breached Company
         </h1>
         {latestBreach && (
-            <div className='Latest__container'>
-                <h2 className='Latest__name'>{latestBreach.Name}</h2>
-                <p className='Latest__description'>{latestBreach.Description}</p>
+            <div className='latest__container'>
+                <h2 className='latest__name'>{latestBreach.Name}</h2>
+                <p className='latest__description'>{latestBreach.Description}</p>
             </div>
         )}
     </div>
   )
 }
 
-export default Index
+export default latestBreach
