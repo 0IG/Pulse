@@ -1,0 +1,36 @@
+.Latest {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    &__title {
+        font-family: "Orbitron", serif;
+        font-size: 50px;
+        font-weight: 500;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__name {
+        font-family: "Orbitron", serif;
+        font-size: 40px;
+        font-weight: 500;
+        margin: 0;
+        padding-bottom: 10px;
+    }
+
+    &__description {
+        font-family: "Orbitron", serif;
+        font-size: 20px;
+        font-weight: 500;
+        margin: 0;
+    }
+
+
+}
