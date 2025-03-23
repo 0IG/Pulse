@@ -1,45 +1,52 @@
-import React, { useState } from 'react'
-import LatestBreach from '../index/latestBreach/LatestBreach';
-import { RiUserSearchFill } from "react-icons/ri";
+import React, { useState } from 'react';
 import axios from 'axios';
-import './Home.scss'
+import './Home.scss';
 
 export default function Home() {
+  const [input, setInput] = useState('');
 
-  const baseUrl = import.meta.env.VITE_BASE_URL
-  const baseBreached = import.meta.env.VITE_BASE_BREACHED
-  const [breached, setBreached] = useState(null);
-
-  async function checkEmailBreach(email) {
-    const encodedEmail = encodeURIComponent(email);
-    const url = `https://haveibeenpwned.com/api/v3/breachedaccount/${encodedEmail}`;
-  
+  async function checkEmailBreach() {
     try {
-      const response = await axios.get(url, {
-        headers: {
-          'hibp-api-key': import.meta.env.VITE_API_KEY,
-          'user-agent': 'Pulse',
-        },
-        params: {
-          truncateResponse: false,
-        },
+      const response = await axios.post('http://localhost:8000/api/check-breach', {
+        email: input,
       });
-  
       console.log('Breaches found:', response.data);
     } catch (error) {
-      if (error.response?.status === 404) {
-        console.log('No breach found for this email.');
-      } else {
-        console.error('Error:', error.response?.status, error.message);
-      }
+      console.error('Error:', error);
     }
   }
 
+  const validation = (e) => {
+    e.preventDefault();
+
+    const validateEmail = (email) => {
+      return String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+    if (validateEmail(input)) {
+      checkEmailBreach();
+    } else {
+      console.log('Invalid email address');
+    }
+  };
+
   return (
     <div className='Home'>
-        <div className='Home__container'>
-            <input className='Home__input' type="text" placeholder='GOT PWN ?' onSubmit={(e) => checkEmailBreach(e.target.value)}/>
-        </div>
+      <div className='Home__container'>
+        <form className='Home__form' onSubmit={validation}>
+          <input
+            className='Home__input'
+            type='text'
+            placeholder='GOT PWN ?'
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+        </form>
+      </div>
     </div>
-  )
+  );
 }
