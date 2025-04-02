@@ -4,17 +4,38 @@ import './Home.scss';
 
 export default function Home() {
   const [input, setInput] = useState('');
+  const [breaches, setBreaches] = useState([]);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
 
   async function checkEmailBreach() {
+    setLoading(true);
+    setError('');
+    setBreaches([]);
+  
     try {
-      const response = await axios.post('http://localhost:8000/api/check-breach', {
+      const response = await axios.post('http://localhost:8000/api/check_breach', {
         email: input,
       });
-      console.log('Breaches found:', response.data);
-    } catch (error) {
-      console.error('Error:', error);
+  
+      if (response.data.length === 0) {
+        setBreaches([]); // no breaches
+      } else {
+        setBreaches(response.data); // breach data
+      }
+    } catch (err) {
+      if (err.response?.status === 404) {
+        setBreaches([]); // no breaches found
+      } else {
+        setError('Something went wrong. Please try again.');
+        console.error(err);
+      }
+    } finally {
+      setLoading(false);
     }
   }
+  
 
   const validation = (e) => {
     e.preventDefault();
@@ -33,6 +54,10 @@ export default function Home() {
       console.log('Invalid email address');
     }
   };
+  
+  console.log(import.meta.env.VITE_ASCII_ART)
+
+
 
   return (
     <div className='Home'>
@@ -46,6 +71,29 @@ export default function Home() {
             onChange={(e) => setInput(e.target.value)}
           />
         </form>
+        
+        {loading && <p>Checking for breaches...</p>}
+        {!loading && error && <p className='Home__error'>{error}</p>}
+        {!loading && breaches.length > 0 && (
+          <div className='Home__results'>
+            ...
+          </div>
+        )}
+          {!loading && breaches.length > 0 && (
+            <div className='Home__results'>
+              <h2>⚠️ Breaches Found</h2>
+              <ul>
+                {breaches.map((breach) => (
+                  <li key={breach.Name}>
+                    <strong>{breach.Name}</strong> — {breach.BreachDate}  
+                    <br />
+                    <em>Compromised data:</em> {breach.DataClasses.join(', ')}
+                  </li>
+                ))}
+                
+              </ul>
+              </div>
+            )}
       </div>
     </div>
   );
