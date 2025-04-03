@@ -7,13 +7,14 @@ export default function Home() {
   const [breaches, setBreaches] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
-
+  
+  console.log(import.meta.env.VITE_ASCII_ART)
+  
   async function checkEmailBreach() {
     setLoading(true);
     setError('');
     setBreaches([]);
-  
+    
     try {
       const response = await axios.post('http://localhost:8000/api/check_breach', {
         email: input,
@@ -55,7 +56,6 @@ export default function Home() {
     }
   };
   
-  console.log(import.meta.env.VITE_ASCII_ART)
 
 
 
