@@ -5,11 +5,9 @@ import './Home.scss';
 export default function Home() {
   const [input, setInput] = useState('');
   const [breaches, setBreaches] = useState([]);
-
-
   async function checkEmailBreach() {
     setBreaches([]);
-  
+    
     try {
       const response = await axios.post('http://localhost:8000/api/check_breach', {
         email: input,
@@ -49,7 +47,6 @@ export default function Home() {
     }
   };
   
-  console.log(import.meta.env.VITE_ASCII_ART)
 
   function displayBreachInfo(breach){
     let breachDate = ''
