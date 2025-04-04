@@ -5,13 +5,9 @@ import './Home.scss';
 export default function Home() {
   const [input, setInput] = useState('');
   const [breaches, setBreaches] = useState([]);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
 
 
   async function checkEmailBreach() {
-    setLoading(true);
-    setError('');
     setBreaches([]);
   
     try {
@@ -28,11 +24,9 @@ export default function Home() {
       if (err.response?.status === 404) {
         setBreaches([]); // no breaches found
       } else {
-        setError('Something went wrong. Please try again.');
-        console.error(err);
+        console.error('Something went wrong. Please try again.');
+        console.log(err);
       }
-    } finally {
-      setLoading(false);
     }
   }
   
@@ -57,6 +51,14 @@ export default function Home() {
   
   console.log(import.meta.env.VITE_ASCII_ART)
 
+  function displayBreachInfo(breach){
+    let breachDate = ''
+    if (breach.BreachDate){
+      breachDate = breach.BreachDate
+    } else {
+      breachDate = 'No date found.'
+    }
+  }
 
 
   return (
@@ -71,21 +73,15 @@ export default function Home() {
             onChange={(e) => setInput(e.target.value)}
           />
         </form>
-        
-        {loading && <p>Checking for breaches...</p>}
-        {!loading && error && <p className='Home__error'>{error}</p>}
-        {!loading && breaches.length > 0 && (
-          <div className='Home__results'>
-            ...
-          </div>
-        )}
-          {!loading && breaches.length > 0 && (
+
+          {breaches.length > 0 && (
             <div className='Home__results'>
               <h2>⚠️ Breaches Found</h2>
               <ul>
                 {breaches.map((breach) => (
                   <li key={breach.Name}>
-                    <strong>{breach.Name}</strong> — {breach.BreachDate}  
+                    <strong>{breach.Name}</strong> 
+                    <strong>{displayBreachInfo}</strong>
                     <br />
                   </li>
                 ))}
