@@ -87,7 +87,6 @@ export default function Home() {
                   <li key={breach.Name}>
                     <strong>{breach.Name}</strong> — {breach.BreachDate}  
                     <br />
-                    <em>Compromised data:</em> {breach.DataClasses.join(', ')}
                   </li>
                 ))}
                 
