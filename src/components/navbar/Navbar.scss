@@ -5,10 +5,10 @@
     padding-top: 20px;
     display: inline-flex;
     align-items: center;
+    font-family: "Orbitron", serif;
 
     &__title {
         color: white;
-        font-family: "Orbitron", serif;
         font-size: 50px;
         font-weight: 500;
         margin: 0;
@@ -20,6 +20,20 @@
         height: 100%;
         padding-left: 20px;
         padding-bottom: 10px;
+    }
+
+    &__login {
+        display: flex;
+        margin-left: 20px;
+        justify-content: right;
+
+        a {
+            color: white;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
     }
 
 }

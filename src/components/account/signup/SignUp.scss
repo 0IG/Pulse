@@ -1,7 +1,8 @@
-.login {
+.signup {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "Orbitron", serif;
 
     &__form {
         display: flex;
@@ -11,7 +12,6 @@
 
     &__title {
         display: flex;
-        font-family: "Orbitron", serif;
         font-size: 50px;
         font-weight: 500;
         color: white;
@@ -25,7 +25,6 @@
         outline: none;
         border: 1px solid black;
         padding-left: 10px;
-        font-family: "Orbitron", serif;
         background-color: white;
         margin-bottom: 8px;
     }
@@ -38,7 +37,14 @@
         outline: none;
         border: 1px solid black;
         padding-left: 10px;
-        font-family: "Orbitron", serif;
         background-color: white;
+    }
+
+    &__signUpNav {
+        font-size: 9px;
+
+        a:link {
+            text-decoration: none;
+        }
     }
 }

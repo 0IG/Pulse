@@ -46,6 +46,7 @@ export default function Home() {
       console.log('Invalid email address');
     }
   };
+
   
 
   function displayBreachInfo(breach){
@@ -79,7 +80,7 @@ export default function Home() {
                   <li key={breach.Name}>
                     <strong>{breach.Name}</strong> 
                     <strong>{displayBreachInfo}</strong>
-                    <br />
+z                    <br />
                   </li>
                 ))}
                 

@@ -1,0 +1,50 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Orbitron", serif;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 200px;
+    }
+
+    &__title {
+        display: flex;
+        font-size: 50px;
+        font-weight: 500;
+        color: white;
+    }
+
+    &__email {
+        display: flex;
+        width: 400px;
+        height: 40px;
+        font-size: 15px;
+        outline: none;
+        border: 1px solid black;
+        padding-left: 10px;
+        background-color: white;
+        margin-bottom: 8px;
+    }
+
+    &__password {
+        display: flex;
+        width: 400px;
+        height: 40px;
+        font-size: 15px;
+        outline: none;
+        border: 1px solid black;
+        padding-left: 10px;
+        background-color: white;
+    }
+
+    &__signUpNav {
+        font-size: 9px;
+
+        a:link {
+            text-decoration: none;
+        }
+    }
+}
